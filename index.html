@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <div class="emergency-banner">
+        🚨 Medical Emergency? Call 911 or visit the nearest ER immediately.
+    </div>
+    <header class="header">
+        <div class="logo">CareSync</div>
+        <nav class="nav">
+            <button class="btn btn-primary" id="login-modal-btn">Login</button>
+        </nav>
+    </header>
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Your Health, Our Priority</h1>
+                <div class="location-widget">
+                    <p id="location-text">Nearby Clinics: Searching...</p>
+                    <button id="get-location-btn" class="btn btn-outline">📍 Get My Location</button>
+                </div>
+            </div>
+        </section>
+        <section class="doctors-section">
+            <div class="section-header">
+                <h2>Our Specialists</h2>
+                <div class="live-queue">
+                    <span class="queue-dot"></span>
+                    <span id="queue-status">Current Wait: Calculating...</span>
+                </div>
+            </div>
+
+            <div class="doctor-cards" id="doctors-container">
+            </div>
+        </section>
+        <section class="booking-section">
+            <h2>Book an Appointment</h2>
+
+            <div id="booking-container">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="doctor-select">Select Doctor</label>
+                        <select id="doctor-select" required>
+                            <option value="">Loading doctors...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Time Slot</label>
+                        <div class="time-slots" id="time-slots-container">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="submit-booking" disabled>Confirm
+                        Booking</button>
+                </form>
+            </div>
+            <div id="success-container" class="hidden">
+                <div class="success-card">
+                    <div class="success-icon">✓</div>
+                    <h3>Booking Confirmed!</h3>
+                    <p id="booking-details"></p>
+                    <div class="success-actions">
+                        <button id="reschedule-btn" class="btn btn-secondary">Reschedule</button>
+                        <button id="cancel-btn" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="login-modal" class="modal modal-hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Patient Login</h2>
+            <form id="login-form-submit">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
